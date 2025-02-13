@@ -56,6 +56,7 @@ object frmMain: TfrmMain
       TabOrder = 0
       OnClick = ReportTreeClick
       OnHint = ReportTreeHint
+      ExplicitLeft = 0
     end
   end
   object Panel2: TPanel
@@ -167,7 +168,7 @@ object frmMain: TfrmMain
     Left = 429
     Top = 475
     Width = 183
-    Height = 254
+    Height = 198
     Caption = 'Database'
     Color = 7695199
     ParentBackground = False
@@ -176,10 +177,10 @@ object frmMain: TfrmMain
     StyleElements = [seFont, seClient]
     object lblDBStatus: TLabel
       AlignWithMargins = True
-      Left = 10
-      Top = 184
+      Left = 11
+      Top = 135
       Width = 163
-      Height = 62
+      Height = 51
       Margins.Left = 1
       Margins.Top = 1
       Margins.Right = 1
@@ -189,7 +190,7 @@ object frmMain: TfrmMain
     end
     object btnChangeDB: TButton
       Left = 42
-      Top = 124
+      Top = 99
       Width = 100
       Height = 25
       Action = acnChangeDatabase
@@ -199,42 +200,49 @@ object frmMain: TfrmMain
     object rbWSWoodsupport: TRadioButton
       Tag = 1
       Left = 24
-      Top = 32
+      Top = 24
       Width = 156
       Height = 17
-      Caption = 'WS-Woodsupport'
+      Caption = 'Local'
       TabOrder = 1
       OnClick = acnDBSelectExecute
     end
     object rbCMFaster: TRadioButton
       Tag = 2
       Left = 24
-      Top = 64
+      Top = 47
       Width = 156
       Height = 17
-      Caption = 'CM-Faster-WOODSUPPORT'
+      Caption = 'Server 1'
       TabOrder = 2
       OnClick = acnDBSelectExecute
     end
     object rbCM: TRadioButton
       Tag = 3
       Left = 24
-      Top = 96
+      Top = 70
       Width = 137
       Height = 17
-      Caption = 'CM-WOODSUPPORT'
+      Caption = 'Server 2'
       TabOrder = 3
       OnClick = acnDBSelectExecute
     end
-    object btnTranslations: TButton
-      Left = 42
-      Top = 155
-      Width = 100
+  end
+  object grpTranslation: TGroupBox
+    Left = 427
+    Top = 682
+    Width = 185
+    Height = 47
+    Caption = 'Translation'
+    TabOrder = 5
+    object btnTranslation: TButton
+      AlignWithMargins = True
+      Left = 40
+      Top = 16
+      Width = 105
       Height = 25
-      Caption = 'Translations'
-      DropDownMenu = pmnuReport
-      TabOrder = 4
-      OnClick = btnTranslationsClick
+      Action = acnTranslations
+      TabOrder = 0
     end
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
@@ -481,6 +489,7 @@ object frmMain: TfrmMain
     object acnTranslations: TAction
       Category = 'Report'
       Caption = 'Translations'
+      OnExecute = btnTranslationsClick
     end
   end
   object pmnuReport: TPopupMenu

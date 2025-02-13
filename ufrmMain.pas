@@ -93,13 +93,14 @@ type
     rbWSWoodsupport: TRadioButton;
     rbCMFaster: TRadioButton;
     rbCM: TRadioButton;
-    lblDBStatus: TLabel;
     acnChangeDatabase: TAction;
     acnCopyTables: TAction;
     CopyDBTables1: TMenuItem;
-    btnTranslations: TButton;
     acnTranslations: TAction;
     ranslations1: TMenuItem;
+    lblDBStatus: TLabel;
+    grpTranslation: TGroupBox;
+    btnTranslation: TButton;
     procedure FormCreate(Sender: TObject);
     procedure ReportTreeClick(Sender: TObject);
     procedure ReportTreeHint(Sender: TObject; const Node: TTreeNode;
@@ -468,7 +469,7 @@ begin
     Screen.Cursor := crSQLWait;
     if rbWSWoodsupport.Checked then begin
       iTag := rbWSWoodsupport.Tag;
-      server := 'AML-NET-RDS-011\WOODSUPPORT'
+      server := dmsConnector.localServer;
     end
     else if rbCMFaster.Checked then begin
       iTag := rbCMFaster.Tag;
