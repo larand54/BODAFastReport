@@ -28,7 +28,8 @@ uses
   VidaType in '..\CMCommonUnits\VidaType.pas',
   uSQLServerName in '..\CMCommonUnits\uSQLServerName.pas',
   dmsDataConn in '..\CMCommonUnits\dmsDataConn.pas' {dmsConnector: TDataModule},
-  ufrmReportSettings in 'ufrmReportSettings.pas' {frmReportSettings};
+  ufrmReportSettings in 'ufrmReportSettings.pas' {frmReportSettings},
+  uInitSynlog in '..\CMCommonUnits\uInitSynlog.pas';
 
 {$R *.res}
 
