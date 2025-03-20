@@ -10,9 +10,7 @@ object frmReportSettings: TfrmReportSettings
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object lblTemplate_Name: TLabel
     Left = 32
@@ -189,6 +187,7 @@ object frmReportSettings: TfrmReportSettings
       A2FFD8B2A2FFD8B1A1FFA08277C2000000060000000000000000}
     ParentShowHint = False
     ShowHint = True
+    Visible = False
     OnClick = sbnAddDocTypeClick
   end
   object edTemplate: TEdit

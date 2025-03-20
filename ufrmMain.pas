@@ -427,30 +427,30 @@ begin
     for Reportdata in Reportsdata do
     begin
 
-    docType := Reportdata.docType;
-    docTypeName := dmFR.getDocTypeName(docType);
-    Template := Reportdata.Template;
-    if LastDocType <> docType then
-    begin
-      Node := TreeItemSearch(ReportTree,docTypeName);
-      if not assigned(Node) then
-        Node := ReportTree.Items.AddChildObject(ReportTree.Selected,
-          docTypeName, nil);
+      docType := Reportdata.docType;
+      docTypeName := dmFR.getDocTypeName(docType);
+      Template := Reportdata.Template;
+      if LastDocType <> docType then
+      begin
+        Node := TreeItemSearch(ReportTree,docTypeName);
+        if not assigned(Node) then
+          Node := ReportTree.Items.AddChildObject(ReportTree.Selected,
+                  docTypeName, nil);
       // intToStr(docType), nil);
-      LastDocType := docType;
-    end;
-    subItem := ReportTree.Items.AddChildObject(Node, Template, Reportdata);
+        LastDocType := docType;
+      end;
+      subItem := ReportTree.Items.AddChildObject(Node, Template, Reportdata);
 
-    FErrors.Clear;
-    if validateReportData(Reportdata, FErrors) then
-    begin
-      subItmIndx := 2;
-    end else
+      FErrors.Clear;
+      if validateReportData(Reportdata, FErrors) then
+      begin
+        subItmIndx := 2;
+      end else
       subItmIndx := 1;
-    subItem.ImageIndex := subItmIndx;
-    subItem.SelectedIndex := subItmIndx;
-  end;
-  ReportTree.items[0].expand(false);
+      subItem.ImageIndex := subItmIndx;
+      subItem.SelectedIndex := subItmIndx;
+    end;
+    ReportTree.items[0].expand(false);
   finally
     FReportsData := ReportsData;
   end;

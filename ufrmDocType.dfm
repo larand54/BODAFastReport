@@ -10,10 +10,8 @@ object frmDocType: TfrmDocType
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Replele: TLabel
     Left = 376
@@ -131,7 +129,7 @@ object frmDocType: TfrmDocType
     TabOrder = 4
     OnClick = BitBtn1Click
   end
-  object BitBtn2: TBitBtn
+  object btnDeleteDocType: TBitBtn
     Left = 568
     Top = 294
     Width = 75
@@ -173,7 +171,7 @@ object frmDocType: TfrmDocType
       00000000000000000000101010462121218D2F2F2FC7383838F0383838F02F2F
       2FC72121218D1010104600000000000000000000000000000000}
     TabOrder = 5
-    OnClick = BitBtn2Click
+    OnClick = btnDeleteDocTypeClick
   end
   object BitBtn3: TBitBtn
     Left = 432

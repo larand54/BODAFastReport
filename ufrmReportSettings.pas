@@ -166,6 +166,7 @@ begin
     bbnCrtMain.OnClick := bbnUpdMainClick;
     frmReportSettings.Caption := 'Report settings  -- Update Report' ;
     FReportController := TCMC;
+    frmDocType := TfrmDocType.Create(self);
 
     // Fill form with data
     FillDocTypeData(FReportData.docType);
@@ -230,6 +231,11 @@ begin
     iDocType := Integer(sl.Objects[i]);
     cboDocType.Items.AddObject(sDocType, TObject(iDocType));
   end;
+  if aDocType >= dmFR.DocType.Count then begin
+    showMessage('Felaktig rapporttyp - Rätta till det!');
+    aDocType := 0;  // Kontrakt För att passera nästa test så vi får upp dialogen och kan rätta till felet.
+  end;
+
   if aDocType > 0 then begin
     cboDocType.Text := dmFR.DocType.Items[aDocType];
     edDocType.Text := intToStr(aDocType);

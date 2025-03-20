@@ -56,7 +56,6 @@ object frmMain: TfrmMain
       TabOrder = 0
       OnClick = ReportTreeClick
       OnHint = ReportTreeHint
-      ExplicitLeft = 0
     end
   end
   object Panel2: TPanel

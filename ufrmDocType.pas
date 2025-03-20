@@ -17,13 +17,13 @@ type
     edDescription: TEdit;
     Label2: TLabel;
     BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
+    btnDeleteDocType: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure sgDocTypeSelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
-    procedure BitBtn2Click(Sender: TObject);
+    procedure btnDeleteDocTypeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure sgDocTypeMouseUp(Sender: TObject; Button: TMouseButton;
@@ -54,7 +54,7 @@ begin
   if edDoctype.Text = '' then
   begin
     // Give error message 'Enter a valid number first!'
-    showMessage('Enter a valid number first!');
+    showMessage('Ange ett giltigt nummer!');
     exit;
   end;
   try
@@ -62,23 +62,23 @@ begin
      DT := strToInt(edDoctype.Text);
      if DT <= 0 then
      begin
-       showmessage('Valid number is >  0');
+       showmessage('Negativa nummer ej tillåtna!');
        exit;
      end;
   except
-    ShowMessage('Entered value is not a number!');
+    ShowMessage('Inte ett nummer!');
     exit;
   end;
   // Check that the entered doctype is unique
   if dmFR.getDocTypeByNumber(DT) <> '' then
   begin
-    showMessage('Entered doctype already exists!');
+    showMessage('Rapporttypen finns redan!');
     exit;
   end;
   // Check that a description is entered
   if edDescription.Text = '' then
   begin
-    ShowMessage('Please enter some description!');
+    ShowMessage('Beskrivning saknas!');
     exit;
   end;
 
@@ -91,7 +91,7 @@ begin
   end;
 end;
 
-procedure TfrmDocType.BitBtn2Click(Sender: TObject);
+procedure TfrmDocType.btnDeleteDocTypeClick(Sender: TObject);
 var
   iDt: integer;
   sDescr: string;
@@ -114,7 +114,7 @@ end;
 
 procedure TfrmDocType.BitBtn3Click(Sender: TObject);
 begin
-  dmFR.updateDoctype(strToInt(edDoctype.Text), edDescription.Text);
+  dmFR.updateReportType(strToInt(edDoctype.Text), edDescription.Text);
   FillDocTypeGrid;
 end;
 
@@ -132,12 +132,13 @@ var
   Row: integer;
   st : TStringList;
 begin
+//  Clean up grid
   docType := dmFR.DocType;
   for Row:=0 to sgDocType.RowCount-1 do
     sgDocType.Rows[Row].Clear;
-//  sgDocType.Options := sgDocType.Options + [goRowSelect];
+
+  // Fill up and sort the grid with existing doctypes
   sgDocType.RowCount := 1 + docType.Count;
-//  sgDocType.Options := sgDocType.Options - [goRowSelect];
   Row := 1;
   for idocType in docType.keys do begin
     st := TStringList.Create;
